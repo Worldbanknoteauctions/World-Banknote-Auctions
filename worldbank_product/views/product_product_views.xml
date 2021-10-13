@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="product_product_view_form_wb" model="ir.ui.view">
+        <field name="name">product.product.view.form.wb</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
+                <page name="notes_info" string="Notes Info">
+                    <group>
+                        <field name="full_id_number"/>
+                        <field name="country_code_from_id"/>
+                        <field name="grade_condition"/>
+                        <field name="full_code"/>
+                        <field name="g"/>
+                        <field name="unique_certification_number"/>
+                        <field name="grading_company"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
