@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="helpdesk_sources_view_tree" model="ir.ui.view">
+        <field name="name">helpdesk.sources.view.tree</field>
+        <field name="model">helpdesk.sources</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record id="helpdesk_sources_view_form" model="ir.ui.view">
+        <field name="name">helpdesk.sources.view.form</field>
+        <field name="model">helpdesk.sources</field>
+        <field name="arch" type="xml">
+            <form string="Sources">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="sequence" invisible="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="helpdesk_sources_action" model="ir.actions.act_window">
+        <field name="name">Sources</field>
+        <field name="res_model">helpdesk.sources</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+            No Sources found. Let's create one!
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="helpdesk_sources_menu"
+        action="helpdesk_sources_action"
+        parent="helpdesk.helpdesk_menu_config"
+        sequence="4"/>
+</odoo>

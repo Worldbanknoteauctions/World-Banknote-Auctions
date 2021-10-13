@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="notenumber_report_view_tree" model="ir.ui.view">
+        <field name="name">notenumber.report.view.tree</field>
+        <field name="model">notenumber.report</field>
+        <field name="arch" type="xml">
+            <tree string="Name">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>  
+            </tree>
+        </field>
+    </record>
+
+    <record id="notenumber_report_view_form" model="ir.ui.view">
+        <field name="name">notenumber.report.view.form</field>
+        <field name="model">notenumber.report</field>
+        <field name="arch" type="xml">
+            <form string="Name">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Name..."/>
+                        </h1>
+                    </div>
+                    <group colspan='2'>
+                        <group position="inside">
+                            <field name="note_type"/>
+                            <field name="country"/>
+                            <field name="country_code"/>
+                            <field name="category"/>
+                            <field name="denomination"/>
+                            <field name="label_description"/>
+                            <field name="sequence" invisible="1"/>
+                            <field name="series_1"/>
+                            <field name="series_2"/>
+                        </group>
+                        <group position="inside">
+                            <field name="signature_1"/>
+                            <field name="signature_2"/>
+                            <field name="signature_3"/>
+                            <field name="signature_4"/>
+                            <field name="variety_1"/>
+                            <field name="variety_2"/>
+                            <field name="variety_3"/>
+                            <field name="variety_4"/>
+                            <field name="variety_5"/>
+                            <field name="variety_6"/>
+                            <field name="variety_7"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record id="notenumber_report_action" model="ir.actions.act_window">
+        <field name="name">Note Number Report</field>
+        <field name="res_model">notenumber.report</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No Number Report found. Let's create one!
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="notenumber_report_menu_root"
+        name="Note Number Report"
+        action="notenumber_report_action"
+        sequence="7"/>
+</odoo>
