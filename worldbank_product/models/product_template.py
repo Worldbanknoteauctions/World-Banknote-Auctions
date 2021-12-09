@@ -20,8 +20,11 @@ class ProductTemplate(models.Model):
     def write(self, values):
         if 'name' in values and self.grading_company == 'PMG':
             parsed_barcode = self.parse_barcode(values['name'])
+            country_name = self.env['country.codes'].search([('name', '=', parsed_barcode['country_code_from_id'].name)]).country_name
             values.update({
                 'full_id_number': parsed_barcode['full_id_number'],
+                'country_code_from_id': parsed_barcode['country_code_from_id'],
+                'country': country_name,
                 'grade_condition': parsed_barcode['grade_condition'],
                 'unique_certification_number': parsed_barcode['unique_certification_number'],
                 'g': parsed_barcode['g'],
