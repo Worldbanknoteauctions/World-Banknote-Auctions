@@ -23,7 +23,7 @@
                         </h1>
                     </div>
                     <group>
-                        <field name="country"/>
+                        <field name="country_name"/>
                     </group>
                 </sheet>
             </form>

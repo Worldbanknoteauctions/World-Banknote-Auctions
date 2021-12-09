@@ -11,10 +11,11 @@ class NoteNumberReport(models.Model):
     name = fields.Char(string="Name", store=True)
     active = fields.Boolean(default=True)
     category = fields.Char(string="Category", store=True )
-    country = fields.Many2one("res.country", string="Country", store=True, readonly=True)
+    country = fields.Many2one("res.country", string="Country", store=True)
     country_code = fields.Many2one("country.codes", string="Country Code", store=True)
     denomination = fields.Char(string="Denomination", store=True)
     label_description = fields.Char(string="Label Description", store=True)
+    catalog_number = fields.Char(string="Catalog Number", store=True)
     note_type = fields.Char(string="Note Type", store=True)
     sequence = fields.Integer(string='Sequence', store=True)
     series_1 = fields.Char(string="Series1", store=True)
@@ -30,3 +31,9 @@ class NoteNumberReport(models.Model):
     variety_5 = fields.Char(string="Variety5", store=True)
     variety_6 = fields.Char(string="Variety6", store=True)
     variety_7 = fields.Char(string="Variety7", store=True)
+
+    @api.onchange('country_code')
+    def _onchange_country_code(self):
+        country_name = self.env['country.codes'].search([('name', '=', self.country_code.name)]).country_name
+        if country_name:
+            self.country = country_name

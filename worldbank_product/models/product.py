@@ -6,6 +6,7 @@ class ProductProduct(models.Model):
     
     full_id_number = fields.Many2one("notenumber.report", string="Full ID Number")
     country_code_from_id = fields.Many2one("country.codes", string="Country Code from ID")
+    country = fields.Many2one("res.country", string="Country")
     grade_condition = fields.Char(string="Grade Condition")
     full_code = fields.Char(string="Full Code")
     g = fields.Char(string="G")
@@ -19,9 +20,11 @@ class ProductProduct(models.Model):
     def write(self, values):
         if 'name' in values and self.grading_company == 'PMG':
             parsed_barcode = self.env['product.template'].parse_barcode(values['name'])
+            country_name = self.env['country.codes'].search([('name', '=', parsed_barcode['country_code_from_id'].name)]).country_name
             values.update({
                 'full_id_number': parsed_barcode['full_id_number'],
                 'country_code_from_id': parsed_barcode['country_code_from_id'],
+                'country': country_name,
                 'grade_condition': parsed_barcode['grade_condition'],
                 'unique_certification_number': parsed_barcode['unique_certification_number'],
                 'g': parsed_barcode['g'],
@@ -34,9 +37,11 @@ class ProductProduct(models.Model):
         res = super(ProductProduct, self).create(vals_list)
         if 'name' in res and res.grading_company == 'PMG':
             parsed_barcode = self.env['product.template'].parse_barcode(res['name'])
+            country_name = self.env['country.codes'].search([('name', '=', parsed_barcode['country_code_from_id'].name)]).country_name
             res.update({
                 'full_id_number': parsed_barcode['full_id_number'],
                 'country_code_from_id': parsed_barcode['country_code_from_id'],
+                'country': country_name,
                 'grade_condition': parsed_barcode['grade_condition'],
                 'unique_certification_number': parsed_barcode['unique_certification_number'],
                 'g': parsed_barcode['g'],

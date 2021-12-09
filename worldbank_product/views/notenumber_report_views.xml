@@ -30,6 +30,7 @@
                             <field name="category"/>
                             <field name="denomination"/>
                             <field name="label_description"/>
+                            <field name="catalog_number"/>
                             <field name="sequence" invisible="1"/>
                             <field name="series_1"/>
                             <field name="series_2"/>

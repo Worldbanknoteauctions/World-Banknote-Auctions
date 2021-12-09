@@ -10,6 +10,7 @@
                     <group>
                         <field name="full_id_number"/>
                         <field name="country_code_from_id"/>
+                        <field name="country"/>
                         <field name="grade_condition"/>
                         <field name="full_code"/>
                         <field name="g"/>
