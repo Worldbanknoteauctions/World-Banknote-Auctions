@@ -6,6 +6,7 @@ class ProductProduct(models.Model):
     
     full_id_number = fields.Many2one("notenumber.report", string="Full ID Number")
     country_code_from_id = fields.Many2one("country.codes", string="Country Code from ID")
+    country = fields.Many2one("res.country", string="Country")
     grade_condition = fields.Char(string="Grade Condition")
     full_code = fields.Char(string="Full Code")
     g = fields.Char(string="G")

@@ -10,6 +10,6 @@ class CountryCodes(models.Model):
 
     name = fields.Char(string="Name", store=True)
     active = fields.Boolean(default=True)
-    country = fields.Many2one("res.country", string="Country", store=True)
+    country_name = fields.Many2one("res.country", string="Country", store=True)
     sequence = fields.Integer(string='Sequence', store=True)
     
